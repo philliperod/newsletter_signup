@@ -1,18 +1,21 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const request = require('request');
 
 const app = express();
 
 app.use(express.static('public'));
-// you will use this code above to access your static page (css & images) in your local server for the client's browser to use
+app.use(express.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/signup.html');
 });
 
 app.post('/', (req, response) => {
-  console.log('POST request received.');
+  var firstName = req.body.firstName;
+  var lastName = req.body.lastName;
+  var email = req.body.email;
+
+  console.log(firstName, lastName, email);
 });
 
 app.listen(3000, () => {
