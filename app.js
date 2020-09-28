@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/signup.html');
 });
 
+app.post('/', (req, response) => {
+  console.log('POST request received.');
+});
+
 app.listen(3000, () => {
   console.log('Server started on port 3000.');
 });
