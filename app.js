@@ -4,7 +4,7 @@ const request = require('request');
 const app = express();
 
 app.get('/', (req, res) => {
-  console.log('This is working.');
+  res.sendFile(__dirname + '/signup.html');
 });
 
 app.listen(3000, () => {
