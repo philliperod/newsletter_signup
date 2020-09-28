@@ -1,7 +1,20 @@
 const express = require('express');
 const request = require('request');
+const mailchimp = require('@mailchimp/mailchimp_marketing');
 
 const app = express();
+
+mailchimp.setConfig({
+  apiKey: 'b5c3e1f4fcdd76cbf07d67f7c6dea1e6-us2',
+  server: 'us2'
+});
+
+async function run() {
+  const response = await mailchimp.ping.get();
+  console.log(response);
+}
+
+run();
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
@@ -21,3 +34,8 @@ app.post('/', (req, response) => {
 app.listen(3000, () => {
   console.log('Server started on port 3000.');
 });
+
+// API Key
+// b5c3e1f4fcdd76cbf07d67f7c6dea1e6-us2
+// List ID
+// bcdd24f1b8
